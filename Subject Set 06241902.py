@@ -15,17 +15,12 @@ from matplotlib.patches import Ellipse
 style.use('ggplot')
 
 # **********Changing Directories**************
-# ab = os.path
-# print (ab)
 abc = os.getcwd
-# abc = os.path
-# print(abc)
 bbc = "C:\\Users\\Joseph\\python"
 os.chdir(bbc)
 ccd = os.getcwd
-# print(ccd)
 conf = os.path.exists("C:\\Users\\Joseph\\python\\steelpan-vibrations-classifications.csv")
-# print(conf)
+
 
 # ***********Splitting Objects in CSV File*****
 coords06241902 = []
@@ -175,6 +170,7 @@ plt.show(plt.scatter(antinode4.frame, antinode4.fringe, s=20))
 plt.show(plt.scatter(antinode4.frame, antinode4.area, s=20))
 plt.show(plt.scatter(antinode5.frame, antinode5.fringe, s=20))
 plt.show(plt.scatter(antinode5.frame, antinode5.area, s=20))
+
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 ax.scatter(aggregated_data.x_crd, aggregated_data.y_crd, aggregated_data.frame, c='r', marker='o')
@@ -184,4 +180,4 @@ ax.set_zlabel('Frame')
 ax.set_xlim(0,512)
 ax.set_ylim(0,384)
 ax.set_zlim(0,2000)
-#plt.show()
+plt.show()
