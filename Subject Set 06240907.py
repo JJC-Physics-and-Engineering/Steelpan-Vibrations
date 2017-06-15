@@ -55,31 +55,31 @@ with open("steelpan-vibrations-classifications.csv") as csvfile:
                 # So no data is appended to the subject sets
             elif l_cas == 9:
                 cas[0] = 1
-                coords1 = [float(cas[1]), float(cas[2]), frame_num, cas[8], float(cas[3]), float(cas[4]), float(cas[6]), row[1]]
+                coords1 = [float(cas[1]), float(cas[2]), frame_num, int(cas[8]), float(cas[3]), float(cas[4]), float(cas[6]), row[1]]
                 if subject_set == subject1:
                     coords06240907.append(coords1)
             elif l_cas == 17:
                 cas[0] = 2
-                coords1 = [float(cas[1]), float(cas[2]), frame_num, cas[8], float(cas[3]), float(cas[4]), float(cas[6]), row[1]]
-                coords2 = [float(cas[9]), float(cas[10]), frame_num, cas[16], float(cas[11]), float(cas[12]), float(cas[14]), row[1]]
+                coords1 = [float(cas[1]), float(cas[2]), frame_num, int(cas[8]), float(cas[3]), float(cas[4]), float(cas[6]), row[1]]
+                coords2 = [float(cas[9]), float(cas[10]), frame_num, int(cas[16]), float(cas[11]), float(cas[12]), float(cas[14]), row[1]]
                 if subject_set == subject1:
                     coords06240907.append(coords1)
                     coords06240907.append(coords2)
             elif l_cas == 25:
                 cas[0] = 3
-                coords1 = [float(cas[1]), float(cas[2]), frame_num, cas[8], float(cas[3]), float(cas[4]), float(cas[6]), row[1]]
-                coords2 = [float(cas[9]), float(cas[10]), frame_num, cas[16], float(cas[11]), float(cas[12]), float(cas[14]), row[1]]
-                coords3 = [float(cas[17]), float(cas[18]), frame_num, cas[24], float(cas[19]), float(cas[20]), float(cas[22]), row[1]]
+                coords1 = [float(cas[1]), float(cas[2]), frame_num, int(cas[8]), float(cas[3]), float(cas[4]), float(cas[6]), row[1]]
+                coords2 = [float(cas[9]), float(cas[10]), frame_num, int(cas[16]), float(cas[11]), float(cas[12]), float(cas[14]), row[1]]
+                coords3 = [float(cas[17]), float(cas[18]), frame_num, int(cas[24]), float(cas[19]), float(cas[20]), float(cas[22]), row[1]]
                 if subject_set == subject1:
                     coords06240907.append(coords1)
                     coords06240907.append(coords2)
                     coords06240907.append(coords3)
             elif l_cas == 33:
                 cas[0] = 4
-                coords1 = [float(cas[1]), float(cas[2]), frame_num, cas[8], float(cas[3]), float(cas[4]), float(cas[6]), row[1]]
-                coords2 = [float(cas[9]), float(cas[10]), frame_num, cas[16], float(cas[11]), float(cas[12]), float(cas[14]), row[1]]
-                coords3 = [float(cas[17]), float(cas[18]), frame_num, cas[24], float(cas[19]), float(cas[20]), float(cas[22]), row[1]]
-                coords4 = [float(cas[25]), float(cas[26]), frame_num, cas[32], float(cas[27]), float(cas[28]), float(cas[30]), row[1]]
+                coords1 = [float(cas[1]), float(cas[2]), frame_num, int(cas[8]), float(cas[3]), float(cas[4]), float(cas[6]), row[1]]
+                coords2 = [float(cas[9]), float(cas[10]), frame_num, int(cas[16]), float(cas[11]), float(cas[12]), float(cas[14]), row[1]]
+                coords3 = [float(cas[17]), float(cas[18]), frame_num, int(cas[24]), float(cas[19]), float(cas[20]), float(cas[22]), row[1]]
+                coords4 = [float(cas[25]), float(cas[26]), frame_num, int(cas[32]), float(cas[27]), float(cas[28]), float(cas[30]), row[1]]
                 if subject_set == subject1:
                     coords06240907.append(coords1)
                     coords06240907.append(coords2)
@@ -87,11 +87,11 @@ with open("steelpan-vibrations-classifications.csv") as csvfile:
                     coords06240907.append(coords4)
             elif l_cas == 41:
                 cas[0] = 5
-                coords1 = [float(cas[1]), float(cas[2]), frame_num, cas[8], float(cas[3]), float(cas[4]), float(cas[6]), row[1]]
-                coords2 = [float(cas[9]), float(cas[10]), frame_num, cas[16], float(cas[11]), float(cas[12]), float(cas[14]), row[1]]
-                coords3 = [float(cas[17]), float(cas[18]), frame_num, cas[24], float(cas[19]), float(cas[20]), float(cas[22]), row[1]]
-                coords4 = [float(cas[25]), float(cas[26]), frame_num, cas[32], float(cas[27]), float(cas[28]), float(cas[30]), row[1]]
-                coords5 = [float(cas[33]), float(cas[34]), frame_num, cas[40], float(cas[35]), float(cas[36]), float(cas[38]), row[1]]
+                coords1 = [float(cas[1]), float(cas[2]), frame_num, int(cas[8]), float(cas[3]), float(cas[4]), float(cas[6]), row[1]]
+                coords2 = [float(cas[9]), float(cas[10]), frame_num, int(cas[16]), float(cas[11]), float(cas[12]), float(cas[14]), row[1]]
+                coords3 = [float(cas[17]), float(cas[18]), frame_num, int(cas[24]), float(cas[19]), float(cas[20]), float(cas[22]), row[1]]
+                coords4 = [float(cas[25]), float(cas[26]), frame_num, int(cas[32]), float(cas[27]), float(cas[28]), float(cas[30]), row[1]]
+                coords5 = [float(cas[33]), float(cas[34]), frame_num, int(cas[40]), float(cas[35]), float(cas[36]), float(cas[38]), row[1]]
                 if subject_set == subject1:
                     coords06240907.append(coords1)
                     coords06240907.append(coords2)
@@ -100,12 +100,12 @@ with open("steelpan-vibrations-classifications.csv") as csvfile:
                     coords06240907.append(coords5)
             elif l_cas == 49:
                 cas[0] = 6
-                coords1 = [float(cas[1]), float(cas[2]), frame_num, cas[8], float(cas[3]), float(cas[4]), float(cas[6]), row[1]]
-                coords2 = [float(cas[9]), float(cas[10]), frame_num, cas[16], float(cas[11]), float(cas[12]), float(cas[14]), row[1]]
-                coords3 = [float(cas[17]), float(cas[18]), frame_num, cas[24], float(cas[19]), float(cas[20]), float(cas[22]), row[1]]
-                coords4 = [float(cas[25]), float(cas[26]), frame_num, cas[32], float(cas[27]), float(cas[28]), float(cas[30]), row[1]]
-                coords5 = [float(cas[33]), float(cas[34]), frame_num, cas[40], float(cas[35]), float(cas[36]), float(cas[38]), row[1]]
-                coords6 = [float(cas[41]), float(cas[42]), frame_num, cas[48], float(cas[43]), float(cas[44]), float(cas[46]), row[1]]
+                coords1 = [float(cas[1]), float(cas[2]), frame_num, int(cas[8]), float(cas[3]), float(cas[4]), float(cas[6]), row[1]]
+                coords2 = [float(cas[9]), float(cas[10]), frame_num, int(cas[16]), float(cas[11]), float(cas[12]), float(cas[14]), row[1]]
+                coords3 = [float(cas[17]), float(cas[18]), frame_num, int(cas[24]), float(cas[19]), float(cas[20]), float(cas[22]), row[1]]
+                coords4 = [float(cas[25]), float(cas[26]), frame_num, int(cas[32]), float(cas[27]), float(cas[28]), float(cas[30]), row[1]]
+                coords5 = [float(cas[33]), float(cas[34]), frame_num, int(cas[40]), float(cas[35]), float(cas[36]), float(cas[38]), row[1]]
+                coords6 = [float(cas[41]), float(cas[42]), frame_num, int(cas[48]), float(cas[43]), float(cas[44]), float(cas[46]), row[1]]
                 if subject_set == subject1:
                     coords06240907.append(coords1)
                     coords06240907.append(coords2)
@@ -128,13 +128,20 @@ aggregated_data_init = {'x_crd': [],
                         'area': [],
                         'label': []}
 aggregated_data = pd.DataFrame(aggregated_data_init, columns=['x_crd','y_crd','fringe','frame','area','label'])
+antinode1 = pd.DataFrame(aggregated_data_init, columns=['x_crd','y_crd','fringe','frame','area','label'])
+antinode2 = pd.DataFrame(aggregated_data_init, columns=['x_crd','y_crd','fringe','frame','area','label'])
+antinode3 = pd.DataFrame(aggregated_data_init, columns=['x_crd','y_crd','fringe','frame','area','label'])
+antinode4 = pd.DataFrame(aggregated_data_init, columns=['x_crd','y_crd','fringe','frame','area','label'])
+antinode5 = pd.DataFrame(aggregated_data_init, columns=['x_crd','y_crd','fringe','frame','area','label'])
 df = pd.DataFrame(data=coords06240907, columns=['X', 'Y', 'Frame', 'Fringes', 'rX', 'rY', 'Angle', 'Volunteer', 'Area'])
 for name, group in df.groupby('Frame'):
-    min_sample_size = math.ceil(len(list(group.groupby('Volunteer').size()))/2)
+    min_sample_size = math.floor(len(list(group.groupby('Volunteer').size()))/2)
+    if min_sample_size == 0:
+        min_sample_size = 1
     subset = group[['X', 'Y']]
     tuples = [list(x) for x in subset.values]
     X = np.array(tuples)
-    db = DBSCAN(eps=18, min_samples=(min_sample_size-1)).fit(X)
+    db = DBSCAN(eps=18, min_samples=(min_sample_size)).fit(X)
     labels = db.labels_
     cluster_raw = {'x_crd': list(group['X']),
                    'y_crd': list(group['Y']),
@@ -146,6 +153,29 @@ for name, group in df.groupby('Frame'):
     avg_df = clusters.groupby(['label'], as_index=False).mean()
     avg_df_f = avg_df[avg_df.label != -1]
     aggregated_data = aggregated_data.append(avg_df_f,ignore_index=True)
+for index, row in aggregated_data.iterrows():
+    if 0 < row['x_crd'] < 115 and 175 < row['y_crd'] < 300:
+        antinode1 = antinode1.append(row, ignore_index=True)
+    if 200 < row['x_crd'] < 270 and 20 < row['y_crd'] < 65:
+        antinode2 = antinode2.append(row, ignore_index=True)
+    if 271 < row['x_crd'] < 350 and 20 < row['y_crd'] < 100:
+        antinode3 = antinode3.append(row, ignore_index=True)
+    if 230 < row['x_crd'] < 330 and 150 < row['y_crd'] < 250:
+        antinode4 = antinode4 .append(row, ignore_index=True)
+    if 260 < row['x_crd'] < 330 and 300 < row['y_crd'] < 370:
+        antinode5 = antinode5.append(row, ignore_index=True)
+
+plt.show(plt.scatter(antinode1.frame, antinode1.fringe, s=20))
+plt.show(plt.scatter(antinode1.frame, antinode1.area, s=20))
+plt.show(plt.scatter(antinode2.frame, antinode2.fringe, s=20))
+plt.show(plt.scatter(antinode2.frame, antinode2.area, s=20))
+plt.show(plt.scatter(antinode3.frame, antinode3.fringe, s=20))
+plt.show(plt.scatter(antinode3.frame, antinode3.area, s=20))
+plt.show(plt.scatter(antinode4.frame, antinode4.fringe, s=20))
+plt.show(plt.scatter(antinode4.frame, antinode4.area, s=20))
+plt.show(plt.scatter(antinode5.frame, antinode5.fringe, s=20))
+plt.show(plt.scatter(antinode5.frame, antinode5.area, s=20))
+
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 ax.scatter(aggregated_data.x_crd, aggregated_data.y_crd, aggregated_data.frame, c='r', marker='o')
@@ -156,4 +186,3 @@ ax.set_xlim(0,512)
 ax.set_ylim(0,384)
 ax.set_zlim(0,2000)
 plt.show()
-
