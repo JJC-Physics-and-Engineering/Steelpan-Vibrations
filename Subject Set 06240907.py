@@ -15,17 +15,12 @@ from matplotlib.patches import Ellipse
 style.use('ggplot')
 
 # **********Changing Directories**************
-# ab = os.path
-# print (ab)
 abc = os.getcwd
-# abc = os.path
-# print(abc)
 bbc = "C:\\Users\\Joseph\\python"
 os.chdir(bbc)
 ccd = os.getcwd
-# print(ccd)
 conf = os.path.exists("C:\\Users\\Joseph\\python\\steelpan-vibrations-classifications.csv")
-# print(conf)
+
 
 # ***********Splitting Objects in CSV File*****
 coords06240907 = []
@@ -42,6 +37,7 @@ with open("steelpan-vibrations-classifications.csv") as csvfile:
             subject_set = cds[1]
             frame_num = int(cds[2])
             # cds_header = ['Subject_Ids','Subject_Set','Frame_Number']
+            # Isolating the relevant pieces of data from classification annotations
             classification_annotations = row[-3]
             cas = re.split('"|\{|\}|\[|\]|:|T\d|\*|\\\\|\(|\)|\''
                            '|if you are unsure\.|see\.|opinions\.'
@@ -49,6 +45,9 @@ with open("steelpan-vibrations-classifications.csv") as csvfile:
             cas = list(filter(None, cas))
             l_cas = len(cas)
 
+            # Appending the data for a single subject set together
+            # Datum are in the form of [x,y,frame,fringe,rx,ry,angle,volunteer]
+            # Had to take in account of the classifications annotations being different lengths
             if l_cas == 1:
                 cas[0] = 0
                 # Frames without antinode regions do not need to be plotted
@@ -113,6 +112,9 @@ with open("steelpan-vibrations-classifications.csv") as csvfile:
                     coords06240907.append(coords4)
                     coords06240907.append(coords5)
                     coords06240907.append(coords6)
+                    
+# Getting rid of classifications with '0' fringes
+# Appending the area of an antinode region to the data
 for datum in coords06240907:
     if datum[3] == 0:
         datum[3] = np.NaN
@@ -121,6 +123,8 @@ for datum in coords06240907:
     area_ellipse = 3.14159265359*rx*ry
     datum.append(area_ellipse)
 
+# Initializing the dataframe that will hold all the data
+# and the dataframes that will hold each antinode region
 aggregated_data_init = {'x_crd': [],
                         'y_crd': [],
                         'fringe': [],
@@ -133,6 +137,8 @@ antinode2 = pd.DataFrame(aggregated_data_init, columns=['x_crd','y_crd','fringe'
 antinode3 = pd.DataFrame(aggregated_data_init, columns=['x_crd','y_crd','fringe','frame','area','label'])
 antinode4 = pd.DataFrame(aggregated_data_init, columns=['x_crd','y_crd','fringe','frame','area','label'])
 antinode5 = pd.DataFrame(aggregated_data_init, columns=['x_crd','y_crd','fringe','frame','area','label'])
+
+# Creating a dataframe for all the data points
 df = pd.DataFrame(data=coords06240907, columns=['X', 'Y', 'Frame', 'Fringes', 'rX', 'rY', 'Angle', 'Volunteer', 'Area'])
 for name, group in df.groupby('Frame'):
     min_sample_size = math.floor(len(list(group.groupby('Volunteer').size()))/2)
@@ -140,6 +146,7 @@ for name, group in df.groupby('Frame'):
         min_sample_size = 1
     subset = group[['X', 'Y']]
     tuples = [list(x) for x in subset.values]
+    # Clustering the centers for each frame, then averaging out the values for each cluster
     X = np.array(tuples)
     db = DBSCAN(eps=18, min_samples=(min_sample_size)).fit(X)
     labels = db.labels_
@@ -152,7 +159,10 @@ for name, group in df.groupby('Frame'):
     clusters = pd.DataFrame(cluster_raw, columns=['x_crd','y_crd','fringe','frame','area','label'])
     avg_df = clusters.groupby(['label'], as_index=False).mean()
     avg_df_f = avg_df[avg_df.label != -1]
+    # Appending the average of each frame together
     aggregated_data = aggregated_data.append(avg_df_f,ignore_index=True)
+
+# Identifying where each region is locating and isolating each one
 for index, row in aggregated_data.iterrows():
     if 0 < row['x_crd'] < 115 and 175 < row['y_crd'] < 300:
         antinode1 = antinode1.append(row, ignore_index=True)
@@ -165,6 +175,8 @@ for index, row in aggregated_data.iterrows():
     if 260 < row['x_crd'] < 330 and 300 < row['y_crd'] < 370:
         antinode5 = antinode5.append(row, ignore_index=True)
 
+# Plotting each antinode's amplitude vs. time graphs
+# Amplitude measured in fringes and area of antinode region
 plt.show(plt.scatter(antinode1.frame, antinode1.fringe, s=20))
 plt.show(plt.scatter(antinode1.frame, antinode1.area, s=20))
 plt.show(plt.scatter(antinode2.frame, antinode2.fringe, s=20))
@@ -176,6 +188,7 @@ plt.show(plt.scatter(antinode4.frame, antinode4.area, s=20))
 plt.show(plt.scatter(antinode5.frame, antinode5.fringe, s=20))
 plt.show(plt.scatter(antinode5.frame, antinode5.area, s=20))
 
+# 3D plot that tracks location of antinode centers through time
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 ax.scatter(aggregated_data.x_crd, aggregated_data.y_crd, aggregated_data.frame, c='r', marker='o')
