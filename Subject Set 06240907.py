@@ -175,19 +175,6 @@ for index, row in aggregated_data.iterrows():
     if 260 < row['x_crd'] < 330 and 300 < row['y_crd'] < 370:
         antinode5 = antinode5.append(row, ignore_index=True)
 
-# Plotting each antinode's amplitude vs. time graphs
-# Amplitude measured in fringes and area of antinode region
-plt.show(plt.scatter(antinode1.frame, antinode1.fringe, s=20))
-plt.show(plt.scatter(antinode1.frame, antinode1.area, s=20))
-plt.show(plt.scatter(antinode2.frame, antinode2.fringe, s=20))
-plt.show(plt.scatter(antinode2.frame, antinode2.area, s=20))
-plt.show(plt.scatter(antinode3.frame, antinode3.fringe, s=20))
-plt.show(plt.scatter(antinode3.frame, antinode3.area, s=20))
-plt.show(plt.scatter(antinode4.frame, antinode4.fringe, s=20))
-plt.show(plt.scatter(antinode4.frame, antinode4.area, s=20))
-plt.show(plt.scatter(antinode5.frame, antinode5.fringe, s=20))
-plt.show(plt.scatter(antinode5.frame, antinode5.area, s=20))
-
 # 3D plot that tracks location of antinode centers through time
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
@@ -199,3 +186,22 @@ ax.set_xlim(0,512)
 ax.set_ylim(0,384)
 ax.set_zlim(0,2000)
 plt.show()
+
+# Plotting each antinode's amplitude vs. time graphs
+# Amplitude measured in fringes and area of antinode region
+def plot_amp_time(antinode):
+    plt.xlim(0,2000)
+    plt.ylim(0,11)
+    plt.xlabel('Time(Frame)')
+    plt.ylabel('Amplitude(Fringe)')
+    plt.show(plt.scatter(antinode.frame, antinode.fringe, s=20))
+    plt.xlim(0,2000)
+    plt.xlabel('Time(Frame)')
+    plt.ylabel('Amplitude(Area)')
+    plt.show(plt.scatter(antinode.frame, antinode.area, s=20))
+    
+plot_amp_time(antinode1)
+plot_amp_time(antinode2)
+plot_amp_time(antinode3)
+plot_amp_time(antinode4)
+plot_amp_time(antinode5)
