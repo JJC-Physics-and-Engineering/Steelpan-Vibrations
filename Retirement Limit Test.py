@@ -13,17 +13,12 @@ from matplotlib.patches import Ellipse
 style.use('ggplot')
 
 # **********Changing Directories**************
-# ab = os.path
-# print (ab)
 abc = os.getcwd
-# abc = os.path
-# print(abc)
 bbc = "C:\\Users\\Joseph\\python"
 os.chdir(bbc)
 ccd = os.getcwd
-# print(ccd)
 conf = os.path.exists("C:\\Users\\Joseph\\python\\steelpan-vibrations-classifications.csv")
-# print(conf)
+
 
 # ***********Splitting Objects in CSV File*****
 coords6272559 = []
