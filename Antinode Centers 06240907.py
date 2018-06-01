@@ -15,11 +15,11 @@ import matplotlib.colors as col
 abc = os.getcwd
 # abc = os.path
 # print(abc)
-bbc = "C:\\Users\\Joseph\\python"
+bbc = "/Users/amorriso/Downloads/Steelpan-Vibrations-master"
 os.chdir(bbc)
 ccd = os.getcwd
 # print(ccd)
-conf = os.path.exists("C:\\Users\\Joseph\\python\\steelpan-vibrations-classifications.csv")
+conf = os.path.exists("/Users/amorriso/Downloads/Steelpan-Vibrations-master/steelpan-vibrations-classifications.csv")
 # print(conf)
 
 # ***********Splitting Objects in CSV File*****

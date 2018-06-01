@@ -14,10 +14,10 @@ style.use('ggplot')
 
 # **********Changing Directories**************
 abc = os.getcwd
-bbc = "C:\\Users\\Joseph\\python"
+bbc = "/Users/amorriso/Downloads/Steelpan-Vibrations-master"
 os.chdir(bbc)
 ccd = os.getcwd
-conf = os.path.exists("C:\\Users\\Joseph\\python\\steelpan-vibrations-classifications.csv")
+conf = os.path.exists("/Users/amorriso/Downloads/Steelpan-Vibrations-master/steelpan-vibrations-classifications.csv")
 
 
 # ***********Splitting Objects in CSV File*****
