@@ -63,6 +63,7 @@ with open("steelpan-vibrations-classifications.csv") as csvfile:
                 coords1 = [float(cas[1]), float(cas[2]), subject_id, int(cas[8]), float(cas[3]), float(cas[4]), float(cas[6])]
                 if subject_id == '6272559':
                     coords6272559.append(coords1)
+                    print(coords6272559)
                 elif subject_id == '6272549':
                     coords6272549.append(coords1)
                 elif subject_id == '6272553':
