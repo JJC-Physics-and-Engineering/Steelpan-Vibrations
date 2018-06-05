@@ -48,7 +48,9 @@ with open("steelpan-vibrations-classifications.csv") as csvfile:
                            '|ou see\.|Ellipse Draw \d', classification_annotations)
             cas = list(filter(None, cas))
             l_cas = len(cas)
+            
             # print (cas)
+            # print (l_cas)
             # print (cds)
 
             # Building the lists that will be used for the arrays used in the Kmeans clustering
