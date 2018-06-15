@@ -1,0 +1,74 @@
+import tkinter as tk
+from tkinter import *
+import tkinter.filedialog 
+import pandas as pd
+
+
+
+
+
+
+class App(Tk):
+    def __init__(self):
+        Tk.__init__(self)
+        menuBar = MenuBar(self)
+    #    buttonBar = ButtonBar(self)
+
+        self.config(menu=menuBar)
+     #   buttonBar.pack()
+
+
+class MenuBar(Menu):
+    
+    def __init__(self, parent):
+        Menu.__init__(self, parent)
+
+        fileMenu = Menu(self, tearoff=False)
+        self.add_cascade(label="File", menu=fileMenu)
+        fileMenu.add_command(label="Open", command=openfile)
+        
+    def openfile(self):
+        
+        self.filename =  tk.filedialog.askopenfilename(initialdir = "C:\\Users\Matt\Desktop\physics", title = "Select file",filetypes = (("csv FILES ONLY","*.csv"),))
+        print(self.filename)
+        app = csvEdit(self.filename)    
+        
+        
+        
+        
+        
+
+        
+class csvEdit():
+    
+    #Open CSV and sort classifications
+    
+   
+    df = pd.read_csv(filename)
+    
+    
+
+    #Sorts the data with respect to Subject_ids
+    class_counts = df['subject_ids'].value_counts().rename('class_counts')
+    df = df.merge(class_counts.to_frame(), left_on='subject_ids', right_index=True)
+
+    df2 = df[df.class_counts > 5] 
+    cols = [14]
+    df3 = df2.drop(df2.columns[cols], axis=1) #Takes out sorting column
+    df4 = df3[~df['workflow_name'].str.contains('Retirement Limit Test')]
+
+
+    #Print to CSV, deleting unnecessary index
+    df4.to_csv('new-steelpan-vibrations-classifications.csv', index = False)
+    print(filename + " works!")
+    
+    
+  
+                                                                                                              
+if __name__ == "__main__":
+
+    app = App()
+    app.mainloop()
+    
+    
+    
